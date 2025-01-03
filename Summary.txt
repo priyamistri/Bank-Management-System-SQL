@@ -1,0 +1,40 @@
+Summary
+The Bank Management System (BMS) is designed to efficiently manage core banking operations, including customer account management, transactions, loan processing, employee records, and the management of customer nominee information. The system ensures secure and accurate handling of data through relational database concepts such as foreign key constraints, primary key identification, and transaction logging. It integrates real-world banking scenarios, facilitating the tracking of accounts, processing of transactions (both credit and debit), loan management, and detailed records of employee activities.
+
+Additionally, the system includes a Customer Nominee Management feature that enables banks to store and manage nominees associated with customer accounts. This is crucial in cases of emergency, inheritance, or other legal matters.
+
+A Customer Log feature has been introduced to track any changes made to the customer records, ensuring that all modifications are captured for auditing and compliance purposes. This log helps the bank maintain a comprehensive history of customer-related changes, which is vital for traceability, security, and regulatory requirements.
+
+Scenario
+In a banking environment, multiple branches serve a variety of customers with different account types and loan products. Each branch operates with designated employees who assist customers in managing their accounts, applying for loans, and conducting transactions. The Bank Management System (BMS) allows for efficient tracking of account balances, processing of transactions (debit and credit), and management of customer loans.
+
+Furthermore, the Customer Nominee Management system allows the bank to store and track nominees for each customer, ensuring that in the event of unforeseen circumstances, the correct individuals can be identified to handle the customer's financial matters.
+
+To support this, the system logs all operations related to customer records, ensuring a traceable history of changes made to any customer-related data.
+
+Tables:
+
+Branches
+Branches (branch_id, branch_name, branch_location)
+Purpose: Holds information on the bank's branches, including unique IDs, branch names, and locations.
+Customers
+Customers (customer_id, first_name, last_name, email, phone_number, address)
+Purpose: Stores customer information, including unique identifiers, contact details, and addresses.
+Customer_Nominee
+Costomer_Nominee (nominee_id, nominee_name, relationship, contact_number, address, customer_id)
+Purpose: The Customer Nominee table stores information about individuals nominated by customers in case of emergencies or legal requirements. This table includes the nominee's name, their relationship to the customer, contact information, and their associated customer. The table allows banks to easily identify individuals who are authorized to act on behalf of a customer in certain legal or financial matters. For instance, in case of a customer's death or incapacity, the nominee can be contacted or act as the beneficiary. This feature ensures that customer relationships are well-documented and protected.
+Accounts
+Accounts (account_id, account_number, account_type, balance, customer_id, branch_id)
+Purpose: Tracks account details like account numbers, types, and current balances, and links to the respective customer and branch.
+Loans
+Loans (loan_id, loan_type, amount, loan_date, due_date, customer_id)
+Purpose: Manages loan records, detailing loan types, amounts, dates, due dates, and the customer associated with each loan.
+Employees
+Employees (employee_id, first_name, last_name, email, phone_number, position, branch_id)
+Purpose: Stores employee information, including names, contact details, positions, and associated branches.
+Transactions
+Transactions (transaction_id, transaction_date, amount, transaction_type, account_id)
+Purpose: Logs all transactions (credit or debit) along with their dates, amounts, and account references.
+Customer_Logs
+Customer_Logs (log_id, activity_type, customer_id, first_name, last_name, email, phone_number, address, timestamp, action_timestamp,Reason)
+Purpose: Tracks changes made to customer records. This table logs any changes made to customer details and includes the old and new values of the fields, the activity type, and timestamps for when the changes occurred.
